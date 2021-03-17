@@ -6,24 +6,30 @@
 std::string removeLeadingSpaces(std::string line){
   std::string newstr = "";
   bool startadd = false;
-  //std::ifstream necFile(line);
-  //std::string wholeFile(std::istreambuf_iterator<char>(necFile),
-  //std::istreambuf_iterator<char>());
-  //std::cout << wholeFile;
+  bool restart = false;
   for(int i = 0; i < line.length(); i++){
     char newchar = line[i];
-    //std::cout << newchar << "\n";
-    if(!isspace(newchar)){
-      startadd = true;
-    }
-    if(startadd == true){
-      newstr += newchar;
+    if(restart == false){
+      if(!isspace(newchar)){
+        startadd = true;
+      }
+      if(startadd == true && newchar != '\n'){
+        newstr += newchar;
+      }
     }
     if(newchar == '\n'){
       newstr += newchar;
+      restart = true;
+      startadd = false;
     }
-    //std::cout << "\n";
+    if(restart == true){
+      if(!isspace(newchar)){
+        startadd = true;
+      }
+      if(startadd == true){
+        newstr += newchar;
+      }
+    }
   }
-  newstr += '\n';
   return newstr;
 }
