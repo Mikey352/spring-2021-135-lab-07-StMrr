@@ -6,7 +6,6 @@ int main()
 {
   std::string line{std::istreambuf_iterator<char>(std::cin), {}};
   std::string teststring = removeLeadingSpaces(line);
-  //std::cout << teststring;
   std::cout << indent(teststring);
   return 0;
 }

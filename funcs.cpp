@@ -17,26 +17,27 @@ std::string indent(std::string line){
   std::string newstr = "";
   std::string currentLine = "";
   int indentCounter = 0;
+  int lineCounter = 0;
+  const char TABS = '\t';
   for(int i = 0; i < line.length(); i++){
     currentLine += line[i];
     if(line[i] == '\n'){
       if(currentLine[0] == '}'){
+        newstr.erase(newstr.length()-1);
         indentCounter--;
-        indentCounter--;
-        //std::cout << indentCounter;
-        //newstr += "here";
-        //currentLine.erase(currentLine.length()-1);
         for(int i = 0; i < indentCounter; i++){
-          currentLine.push_back('\t');
+          currentLine.insert(currentLine.length(), 1, TABS);
         }
       }else{
           indentCounter += countChar(currentLine, '{');
+          indentCounter -= countChar(currentLine, '}');
           for(int i = 0; i < indentCounter; i++){
-            currentLine.push_back('\t');
+              currentLine.insert(currentLine.length(), 1, TABS);
           }
         }
         newstr += currentLine;
         currentLine = "";
+        lineCounter = lineCounter + 1;
     }
   }
   return newstr;
