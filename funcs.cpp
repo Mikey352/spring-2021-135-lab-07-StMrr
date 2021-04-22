@@ -2,7 +2,7 @@
 #include "funcs.h"
 
 // add functions here
-//funcition is used to count how many of a specified character there is
+//function is used to count how many of a specified character there is
 int countChar(std::string line, char c){
   int count = 0;
   //intitialization for count, serves as a counter
