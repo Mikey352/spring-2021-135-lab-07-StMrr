@@ -7,3 +7,4 @@
 std::string removeLeadingSpaces(std::string);
 int countChar(std::string, char);
 std::string indent(std::string);
+//header file requires all function declarations
